@@ -1,0 +1,263 @@
+[
+  {
+    "value": 0,
+    "label": "Daddy Yankee",
+    "src": "/sessions/0.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/0.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 5
+      },
+      {
+        "start": 0,
+        "end": 3
+      },
+      {
+        "start": 0,
+        "end": 0.1
+      }
+    ]
+  },
+  {
+    "value": 11,
+    "label": "Kiddo Toto",
+    "src": "/sessions/11.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/11.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 10
+      },
+      {
+        "start": 0,
+        "end": 5
+      },
+      {
+        "start": 0,
+        "end": 0.2
+      }
+    ]
+
+  },
+  {
+    "value": 17,
+    "label": "Kinder Malo - Lado A",
+    "src": "/sessions/17.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/17.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 10
+      },
+      {
+        "start": 0,
+        "end": 5
+      },
+      {
+        "start": 0,
+        "end": 0.1
+      }
+    ]
+  },
+  {
+    "value": 30,
+    "label": "Homero El Mero Mero",
+    "src": "/sessions/30.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/30.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 15
+      },
+      {
+        "start": 0,
+        "end": 5
+      },
+      {
+        "start": 0,
+        "end": 0.2
+      }
+    ]
+  },
+  {
+    "value": 31,
+    "label": "Zaramay",
+    "src": "/sessions/31.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/31.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 5
+      },
+      {
+        "start": 0,
+        "end": 3
+      },
+      {
+        "start": 0,
+        "end": 0.2
+      }
+    ]
+  },
+  {
+    "value": 37,
+    "label": "YSY A",
+    "src": "/sessions/37.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/37.webp",
+    "difficulty": [
+      {
+        "start": 0.3,
+        "end": 10
+      },
+      {
+        "start": 0.3,
+        "end": 5
+      },
+      {
+        "start": 0.3,
+        "end": 0.4
+      }
+    ]
+  },
+  {
+    "value": 38,
+    "label": "L-Gante",
+    "src": "/sessions/38.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/38.webp",
+    "difficulty": [
+      {
+        "start": 0.4,
+        "end": 4.5
+      },
+      {
+        "start": 0.4,
+        "end": 2
+      },
+      {
+        "start": 0.4,
+        "end": 0.7
+      }
+    ]
+  },
+  {
+    "value": 39,
+    "label": "Snow Tha Product",
+    "src": "/sessions/39.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/39.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 10
+      },
+      {
+        "start": 0,
+        "end": 4
+      },
+      {
+        "start": 0,
+        "end": 0.6
+      }
+    ]
+  },
+  {
+    "value": 41,
+    "label": "Nicky Jam",
+    "src": "/sessions/41.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/41.webp",
+    "difficulty": [
+      {
+        "start": 0.25,
+        "end": 10
+      },
+      {
+        "start": 0.25,
+        "end": 3
+      },
+      {
+        "start": 0.25,
+        "end": 0.7
+      }
+    ]
+  },
+  {
+    "value": 52,
+    "label": "Quevedo",
+    "src": "/sessions/52.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/52.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 10
+      },
+      {
+        "start": 0,
+        "end": 5
+      },
+      {
+        "start": 0,
+        "end": 0.2
+      }
+    ]
+  },
+  {
+    "value": 53,
+    "label": "Shakira",
+    "src": "/sessions/53.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/53.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 10
+      },
+      {
+        "start": 0,
+        "end": 2
+      },
+      {
+        "start": 0,
+        "end": 0.2
+      }
+    ]
+  },
+  {
+    "value": 56,
+    "label": "Rauw Alejandro",
+    "src": "/sessions/56.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/56.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 10
+      },
+      {
+        "start": 0,
+        "end": 1.7
+      },
+      {
+        "start": 0,
+        "end": 0.2
+      }
+    ]
+  },
+  {
+    "value": 58,
+    "label": "Young Miko",
+    "src": "/sessions/58.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/58.webp",
+    "difficulty": [
+      {
+        "start": 0.5,
+        "end": 10
+      },
+      {
+        "start": 0.5,
+        "end": 3
+      },
+      {
+        "start": 0.5,
+        "end": 0.6
+      }
+    ]
+  }
+]
