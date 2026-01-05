@@ -1,5 +1,6 @@
 import type {Metadata, Viewport} from "next";
 
+import {Analytics} from "@vercel/analytics/next";
 import {Rock_Salt} from "next/font/google";
 
 import "./globals.css";
@@ -110,6 +111,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className={`${rockSalt.variable} font-rock-salt h-dvh overflow-hidden antialiased`}>
         {children}
       </body>
+      <Analytics />
     </html>
   );
 }
