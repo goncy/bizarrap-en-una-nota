@@ -1,6 +1,6 @@
 "use client";
 
-import {useState} from "react";
+import {useState, useTransition} from "react";
 
 import type {Track} from "@/types";
 import data from "@/data.json";
@@ -12,9 +12,11 @@ import {SkipIcon} from "@/components/icons/skip";
 import {showConfetti} from "@/lib/confetti";
 
 import {refreshPage} from "./actions";
+import Loading from "./loading";
 
 export default function IdPageClient({track: serverTrack}: {track: Track}) {
   const [revealState, setRevealState] = useState<"hidden" | "correct" | "gave-up">("hidden");
+  const [isPending, startTransition] = useTransition();
 
   const isRevealed = revealState !== "hidden";
 
@@ -36,22 +38,27 @@ export default function IdPageClient({track: serverTrack}: {track: Track}) {
     setRevealState("gave-up");
   }
 
+  async function handleShuffle() {
+    startTransition(async () => {
+      await refreshPage();
+    });
+  }
+
+  if (isPending) {
+    return <Loading />;
+  }
+
   return (
     <main
       aria-label="Juego: Adiviná la session de Bizarrap"
       className="flex min-h-dvh flex-col items-center justify-center gap-6 p-4 md:p-6"
     >
-      {/* Background */}
-      <div aria-hidden="true" className="fixed inset-0 -z-10">
-        <img alt="" className="h-full w-full object-cover" src="/bg-desktop.webp" />
-      </div>
-
       {/* Controles de navegación */}
       <nav
         aria-label="Controles del juego"
         className="order-2 flex items-center gap-3 md:fixed md:top-6 md:left-1/2 md:order-0 md:-translate-x-1/2"
       >
-        <form action={refreshPage}>
+        <form action={handleShuffle}>
           <button
             className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-gray-600 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white active:scale-95"
             title="Cargar session aleatoria"

@@ -110,8 +110,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="es">
       <body className={`${rockSalt.variable} font-rock-salt h-dvh overflow-hidden antialiased`}>
         {children}
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
