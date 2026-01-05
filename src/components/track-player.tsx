@@ -1,6 +1,6 @@
 "use client";
 
-import {createContext, use, useEffect, useMemo, useRef, useState} from "react";
+import {createContext, use, useEffect, useId, useMemo, useRef, useState} from "react";
 
 import type {Track, Difficulty as TrackDifficulty} from "@/types";
 
@@ -100,49 +100,73 @@ function Root({track, children}: {track: Track; children: React.ReactNode}) {
 
 function Player({className}: {className?: string}) {
   const {playStatus, handlePlayPause} = useTrackPlayer();
+  const isPlaying = playStatus === "playing";
 
   return (
-    <div
+    <figure
       className={cn(
-        "bg-polaroid-locked relative flex h-80 w-64 items-center justify-center overflow-hidden",
+        "bg-polaroid-photo relative flex h-80 w-full items-center justify-center overflow-hidden",
         className,
       )}
     >
-      <LockIcon className="text-primary h-32 w-32" />
+      <LockIcon aria-hidden="true" className="text-primary h-32 w-32" />
 
-      {/* Play/Pause button overlay */}
       <button
-        aria-label={playStatus === "idle" ? "Reproducir audio" : "Detener audio"}
-        className="group absolute inset-0 flex items-center justify-center"
+        aria-pressed={isPlaying}
+        className="group absolute inset-0 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+        title={isPlaying ? "Detener audio" : "Reproducir audio"}
         type="button"
         onClick={handlePlayPause}
       >
-        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-black/70 transition-colors group-hover:bg-black/90">
-          {playStatus === "idle" ? <PlayIcon /> : <StopIcon />}
-        </div>
+        <span
+          aria-hidden="true"
+          className="flex h-20 w-20 items-center justify-center rounded-full bg-black/70 transition-colors group-hover:bg-black/90"
+        >
+          {isPlaying ? <StopIcon /> : <PlayIcon />}
+        </span>
+        <span className="sr-only">{isPlaying ? "Detener audio" : "Reproducir audio"}</span>
       </button>
-    </div>
+    </figure>
   );
 }
 
 function Difficulty({className}: {className?: string}) {
   const {track, currentDifficulty, setCurrentDifficulty} = useTrackPlayer();
+  const groupId = useId();
+  const totalLevels = track.difficulty.length;
 
   return (
-    <div className={cn("mt-4 flex items-center justify-center gap-2", className)}>
-      {track.difficulty.map((_, index) => (
-        <button
-          key={index}
-          aria-label={`Nivel ${String(index + 1)}`}
-          className="transition-all hover:scale-110 disabled:cursor-not-allowed disabled:opacity-30"
-          disabled={index >= track.difficulty.length}
-          type="button"
-          onClick={() => setCurrentDifficulty(index)}
-        >
-          <StarIcon className="text-primary h-8 w-8" filled={index <= currentDifficulty} />
-        </button>
-      ))}
-    </div>
+    <fieldset
+      aria-describedby={`${groupId}-desc`}
+      className={cn("mt-4 flex flex-col items-center justify-center gap-1", className)}
+    >
+      <legend className="sr-only">Nivel de dificultad</legend>
+      <p className="sr-only" id={`${groupId}-desc`}>
+        Más estrellas significa más tiempo de audio. Actualmente en nivel {currentDifficulty + 1} de{" "}
+        {totalLevels}.
+      </p>
+
+      <div aria-label="Selector de dificultad" className="flex gap-2" role="radiogroup">
+        {track.difficulty.map((_, index) => {
+          return (
+            <button
+              key={index}
+              aria-checked={index === currentDifficulty}
+              className="rounded-sm transition-all hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+              role="radio"
+              type="button"
+              onClick={() => setCurrentDifficulty(index)}
+            >
+              <StarIcon
+                aria-hidden="true"
+                className="text-primary h-8 w-8"
+                filled={index <= currentDifficulty}
+              />
+            </button>
+          );
+        })}
+      </div>
+    </fieldset>
   );
 }
 

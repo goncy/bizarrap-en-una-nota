@@ -5,5 +5,3 @@ export function PlayIcon({className}: {className?: string}) {
     />
   );
 }
-
-

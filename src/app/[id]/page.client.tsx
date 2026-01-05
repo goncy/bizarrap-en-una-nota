@@ -6,98 +6,132 @@ import type {Track} from "@/types";
 import data from "@/data.json";
 
 import {TrackPlayer} from "@/components/track-player";
-import {ArrowRightIcon, ShuffleIcon} from "@/components/icons";
+import {ShuffleIcon} from "@/components/icons/shuffle";
+import {ArrowRightIcon} from "@/components/icons/arrow-right";
+import {SkipIcon} from "@/components/icons/skip";
 import {showConfetti} from "@/lib/confetti";
 
 import {refreshPage} from "./actions";
 
 export default function IdPageClient({track: serverTrack}: {track: Track}) {
-  const [answer, setAnswer] = useState<string>("");
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [revealState, setRevealState] = useState<"hidden" | "correct" | "gave-up">("hidden");
+
+  const isRevealed = revealState !== "hidden";
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (answer.toLowerCase().trim() === serverTrack.label.toLowerCase()) {
-      setIsCorrect(true);
+    const formData = new FormData(event.target as HTMLFormElement);
+    const answer = formData.get("answer") as string;
 
+    if (answer.toLowerCase().trim() === serverTrack.label.toLowerCase()) {
+      setRevealState("correct");
       showConfetti();
     } else {
-      alert("Incorrecto. Intenta de nuevo.");
+      alert("Incorrecto. Intentá de nuevo.");
     }
   }
 
+  function handleGiveUp() {
+    setRevealState("gave-up");
+  }
+
   return (
-    <main className="relative flex min-h-screen items-center justify-center">
-      <div className="absolute inset-0 -z-10">
-        <img alt="Background" className="h-full w-full object-cover" src="/bg-desktop.webp" />
+    <main
+      aria-label="Juego: Adiviná la session de Bizarrap"
+      className="flex min-h-dvh flex-col items-center justify-center gap-6 p-4 md:p-6"
+    >
+      {/* Background */}
+      <div aria-hidden="true" className="fixed inset-0 -z-10">
+        <img alt="" className="h-full w-full object-cover" src="/bg-desktop.webp" />
       </div>
 
-      {/* Shuffle button */}
-      <form action={refreshPage}>
-        <button
-          aria-label="Aleatorio"
-          className="bg-primary absolute top-4 left-4 flex h-12 w-12 items-center justify-center rounded-full text-white backdrop-blur-sm transition-colors hover:opacity-80"
-        >
-          <ShuffleIcon />
-        </button>
-      </form>
+      {/* Controles de navegación */}
+      <nav
+        aria-label="Controles del juego"
+        className="order-2 flex items-center gap-3 md:fixed md:top-6 md:left-1/2 md:order-0 md:-translate-x-1/2"
+      >
+        <form action={refreshPage}>
+          <button
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-gray-600 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white active:scale-95"
+            title="Cargar session aleatoria"
+            type="submit"
+          >
+            <ShuffleIcon aria-hidden="true" className="text-primary h-5 w-5" />
+            <span className="sr-only">Cargar session aleatoria</span>
+          </button>
+        </form>
 
-      <div className="flex flex-col items-center gap-8">
-        <div className="relative bg-white p-4 shadow-2xl">
-          {isCorrect ? (
-            <>
-              {/* Artist headshot when correct */}
-              <div className="bg-polaroid-locked relative flex h-80 w-64 items-center justify-center overflow-hidden">
-                <img
-                  alt={serverTrack.label}
-                  className="animate-in fade-in absolute h-full w-full object-cover duration-[7s]"
-                  src={serverTrack.headshot}
+        {!isRevealed && (
+          <button
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-gray-600 shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-white active:scale-95"
+            title="Rendirse y ver la respuesta"
+            type="button"
+            onClick={handleGiveUp}
+          >
+            <SkipIcon aria-hidden="true" className="text-primary h-5 w-5" />
+            <span className="sr-only">Rendirse y ver la respuesta</span>
+          </button>
+        )}
+      </nav>
+
+      {/* Polaroid */}
+      <article
+        aria-label={isRevealed ? `Respuesta: ${serverTrack.label}` : "Adivinar artista"}
+        className="order-1 w-full max-w-[300px] bg-white p-4 shadow-2xl md:order-0"
+      >
+        {isRevealed ? (
+          <figure>
+            <img
+              alt={`Foto de ${serverTrack.label}`}
+              className="bg-polaroid-photo animate-in fade-in h-80 w-full object-cover duration-[7s]"
+              src={serverTrack.headshot}
+            />
+            <figcaption className="text-primary text-md mt-4 flex items-center justify-between">
+              <span className="font-bold">{serverTrack.label}</span>
+              <span className="font-bold">
+                <abbr className="no-underline" title="Session número">
+                  #
+                </abbr>
+                {serverTrack.value}
+              </span>
+            </figcaption>
+          </figure>
+        ) : (
+          <TrackPlayer.Root track={serverTrack}>
+            <TrackPlayer.Player />
+
+            <form className="mt-4 flex flex-col gap-2" onSubmit={handleSubmit}>
+              <div className="flex gap-2">
+                <input
+                  aria-label="¿Qué artista está cantando?"
+                  className="w-full flex-1 rounded-lg border-2 border-gray-300 bg-white px-3 py-2 text-base text-black placeholder:text-gray-500 focus:border-transparent focus:ring-2 focus:outline-none"
+                  list="sessions-list"
+                  name="answer"
+                  placeholder="¿Quién es?"
+                  type="search"
                 />
+                <datalist id="sessions-list">
+                  {data.map((track) => (
+                    <option key={track.value} value={track.label} />
+                  ))}
+                </datalist>
+
+                <button
+                  className="bg-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white transition-colors hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
+                  title="Enviar respuesta"
+                  type="submit"
+                >
+                  <ArrowRightIcon aria-hidden="true" className="ml-0.5 h-5 w-5 text-white" />
+                  <span className="sr-only">Enviar respuesta</span>
+                </button>
               </div>
-              <div className="text-primary text-md mt-4 flex items-center justify-between">
-                <span className="font-bold">{serverTrack.label}</span>
-                <span className="font-bold">#{serverTrack.value}</span>
-              </div>
-            </>
-          ) : (
-            <>
-              {/* TrackPlayer, form and difficulty selector */}
-              <TrackPlayer.Root track={serverTrack}>
-                <TrackPlayer.Player />
+            </form>
 
-                <form className="mt-4 flex items-center gap-2" onSubmit={handleSubmit}>
-                  <input
-                    className="flex-1 rounded-lg border-2 border-gray-300 bg-white px-3 py-2 text-xs text-black placeholder:text-gray-500 focus:border-transparent focus:ring-2 focus:outline-none"
-                    list="sessions-list"
-                    name="answer"
-                    placeholder="¿Quién es?"
-                    type="search"
-                    value={answer}
-                    onChange={(e) => setAnswer(e.target.value)}
-                  />
-                  <datalist id="sessions-list">
-                    {data.map((track) => (
-                      <option key={track.value} value={track.label} />
-                    ))}
-                  </datalist>
-
-                  <button
-                    aria-label="Enviar"
-                    className="bg-primary flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
-                    disabled={!answer}
-                    type="submit"
-                  >
-                    <ArrowRightIcon className="ml-0.5 h-5 w-5 text-white" />
-                  </button>
-                </form>
-
-                <TrackPlayer.Difficulty />
-              </TrackPlayer.Root>
-            </>
-          )}
-        </div>
-      </div>
+            <TrackPlayer.Difficulty />
+          </TrackPlayer.Root>
+        )}
+      </article>
     </main>
   );
 }

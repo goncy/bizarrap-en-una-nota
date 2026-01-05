@@ -19,5 +19,3 @@ export function ShuffleIcon({className}: {className?: string}) {
     </svg>
   );
 }
-
-

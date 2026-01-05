@@ -9,5 +9,3 @@ export function LockIcon({className}: {className?: string}) {
     </svg>
   );
 }
-
-

@@ -42,7 +42,7 @@
   },
   {
     "value": 17,
-    "label": "Kinder Malo - Lado A",
+    "label": "Kinder Malo",
     "src": "/sessions/17.mp3",
     "headshot": "https://www.bizarrap.com/images/sessions/17.webp",
     "difficulty": [
@@ -107,15 +107,15 @@
     "headshot": "https://www.bizarrap.com/images/sessions/37.webp",
     "difficulty": [
       {
-        "start": 0.3,
+        "start": 0.2,
         "end": 10
       },
       {
-        "start": 0.3,
+        "start": 0.2,
         "end": 5
       },
       {
-        "start": 0.3,
+        "start": 0.2,
         "end": 0.4
       }
     ]

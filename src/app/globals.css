@@ -28,7 +28,8 @@
   --input: oklch(0.92 0.004 286.32);
   --ring: oklch(0.705 0.015 286.067);
 
-  --polaroid-locked: oklch(0.9 0 0);
+  --polaroid: oklch(1 0 0);
+  --polaroid-photo: oklch(0.9 0 0);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -120,7 +121,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-polaroid-locked: var(--polaroid-locked);
+  --color-polaroid: var(--polaroid);
+  --color-polaroid-photo: var(--polaroid-photo);
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
@@ -151,4 +153,17 @@
   input, button {
     font-family: var(--font-rock-salt);
   }
+}
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
