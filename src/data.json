@@ -61,6 +61,26 @@
     ]
   },
   {
+    "value": 23,
+    "label": "Paulo Londra",
+    "src": "/sessions/23.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/23.webp",
+    "difficulty": [
+      {
+        "start": 0.5,
+        "end": 10
+      },
+      {
+        "start": 0.5,
+        "end": 5
+      },
+      {
+        "start": 0.5,
+        "end": 0.8
+      }
+    ]
+  },
+  {
     "value": 30,
     "label": "Homero El Mero Mero",
     "src": "/sessions/30.mp3",
@@ -97,6 +117,26 @@
       {
         "start": 0,
         "end": 0.2
+      }
+    ]
+  },
+  {
+    "value": 36,
+    "label": "Nathy Peluso",
+    "src": "/sessions/36.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/36.webp",
+    "difficulty": [
+      {
+        "start": 0.2,
+        "end": 10
+      },
+      {
+        "start": 0.2,
+        "end": 5
+      },
+      {
+        "start": 0.2,
+        "end": 0.4
       }
     ]
   },
@@ -181,6 +221,106 @@
     ]
   },
   {
+    "value": 46,
+    "label": "Anuel AA",
+    "src": "/sessions/46.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/46.webp",
+    "difficulty": [
+      {
+        "start": 0.75,
+        "end": 10
+      },
+      {
+        "start": 0.75,
+        "end": 5
+      },
+      {
+        "start": 0.75,
+        "end": 1
+      }
+    ]
+  },
+  {
+    "value": 48,
+    "label": "Tiago PZK",
+    "src": "/sessions/48.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/48.webp",
+    "difficulty": [
+      {
+        "start": 0.25,
+        "end": 10
+      },
+      {
+        "start": 0.25,
+        "end": 3
+      },
+      {
+        "start": 0.25,
+        "end": 0.7
+      }
+    ]
+  },
+  {
+    "value": 49,
+    "label": "Residente",
+    "src": "/sessions/49.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/49.webp",
+    "difficulty": [
+      {
+        "start": 0.25,
+        "end": 10
+      },
+      {
+        "start": 0.25,
+        "end": 3
+      },
+      {
+        "start": 0.25,
+        "end": 0.7
+      }
+    ]
+  },
+  {
+    "value": 50,
+    "label": "Duki",
+    "src": "/sessions/50.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/50.webp",
+    "difficulty": [
+      {
+        "start": 0.25,
+        "end": 8.25
+      },
+      {
+        "start": 0.25,
+        "end": 3
+      },
+      {
+        "start": 0.25,
+        "end": 0.5
+      }
+    ]
+  },
+  {
+    "value": 51,
+    "label": "Villano Antillano",
+    "src": "/sessions/51.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/51.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 5
+      },
+      {
+        "start": 0,
+        "end": 2.5
+      },
+      {
+        "start": 0,
+        "end": 0.2
+      }
+    ]
+  },
+  {
     "value": 52,
     "label": "Quevedo",
     "src": "/sessions/52.mp3",
@@ -221,6 +361,46 @@
     ]
   },
   {
+    "value": 54,
+    "label": "Arcangel",
+    "src": "/sessions/54.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/54.webp",
+    "difficulty": [
+      {
+        "start": 0.1,
+        "end": 8
+      },
+      {
+        "start": 0.1,
+        "end": 3
+      },
+      {
+        "start": 0.1,
+        "end": 0.4
+      }
+    ]
+  },
+  {
+    "value": 55,
+    "label": "Peso Pluma",
+    "src": "/sessions/55.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/55.webp",
+    "difficulty": [
+      {
+        "start": 1.1,
+        "end": 8
+      },
+      {
+        "start": 1.1,
+        "end": 3.5
+      },
+      {
+        "start": 1.1,
+        "end": 1.5
+      }
+    ]
+  },
+  {
     "value": 56,
     "label": "Rauw Alejandro",
     "src": "/sessions/56.mp3",
@@ -256,6 +436,26 @@
       },
       {
         "start": 0.5,
+        "end": 0.6
+      }
+    ]
+  },
+  {
+    "value": 61,
+    "label": "Luck Ra",
+    "src": "/sessions/61.mp3",
+    "headshot": "https://www.bizarrap.com/images/sessions/61.webp",
+    "difficulty": [
+      {
+        "start": 0,
+        "end": 8.2
+      },
+      {
+        "start": 0,
+        "end": 3
+      },
+      {
+        "start": 0,
         "end": 0.6
       }
     ]
